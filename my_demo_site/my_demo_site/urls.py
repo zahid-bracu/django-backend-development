@@ -15,12 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from demo_app import views
+from django.conf.urls import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('demo_app.urls'))
 
-    path('index/', views.index, name="index"),
-    path('home/', views.home, name="home"),
-    path('',views.home , name="home")
+    # path('demo_app/', include('demo_app.urls'))
+
+    # # url pattern , view , view-name pass
+    # path('index/', views.index, name="index"), #connecting the index view
+    # path('home/', views.home, name="home"), #connecting the home view
+    # path('about/', views.about, name="about"), #connecting the about view
+    # path('contact/', views.contact, name="contact"), #connecting the home view
+    # path('', views.home, name="home") #connecting the default view
 ]
